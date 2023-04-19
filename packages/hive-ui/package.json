@@ -1,0 +1,12 @@
+{
+  "name": "@foobar/hive-ui",
+  "version": "0.0.0",
+  "description": "",
+  "type": "module",
+  "author": "",
+  "license": "ISC",
+  "scripts": {
+    "pre-build": "echo \"pre-build\"",
+    "test": "echo \"test\""
+  }
+}

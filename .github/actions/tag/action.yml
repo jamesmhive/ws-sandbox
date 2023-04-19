@@ -1,0 +1,8 @@
+name: 'Tag'
+description: 'Create a tag using the version from package.json in a bump commit'
+inputs:
+  sha:
+    description: 'Version bump commit SHA. The commit must contain one package.json change'
+runs:
+  using: 'node16'
+  main: 'index.js'

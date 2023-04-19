@@ -1,0 +1,66 @@
+name: Publish
+on:
+  pull_request:
+    types: [closed]
+    branches:
+      - master
+
+permissions:
+  contents: read
+  packages: write
+
+env:
+  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+jobs:
+  publish:
+    if: ${{ github.event.pull_request.merged && contains(github.event.pull_request.labels.*.name, 'bump') }}
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [18.14.0]
+
+    name: Node ${{ matrix.node-version }} publish
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 2
+
+      - name: Setup node
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node-version }}
+
+      - name: Pre-Install
+        run: npm install -D --arch=x64 --platform=linux turbo
+
+      - name: Install
+        run: npm ci
+
+      - name: Lint
+        run: npm run lint
+
+      - name: Pre-Build
+        run: npm run pre-build
+
+      - name: Build
+        run: npm run build
+
+      - name: Pre-Publish
+        run: npm run pre-publish
+
+      - name: Tag
+        uses: ./.github/actions/tag
+        with:
+          sha: ${{ github.sha }}
+
+      # TODO: call a "workspace-publish" custom action here
+      #
+      # Each workspace can have different publish targets and publish options.
+      # We'll need a custom action to handle this.
+      #
+      # Don't let workspaces define their own publish script. Make the workspaces
+      # conform to a standard; base it on conventions and configuration.
+      #
+      # Workspaces can use the prepublish hook if they need to run a custom
+      # process before the publish action runs.
