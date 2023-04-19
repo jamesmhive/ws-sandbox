@@ -5,7 +5,7 @@ import {existsSync} from 'fs';
 import {execa} from 'execa';
 import glob from 'glob';
 
-const INITIAL_BASE_BRANCH = 'master';
+const INITIAL_BASE_BRANCH = 'main';
 const INITIAL_REMOTE_NAME = 'origin';
 const PR_TITLE_PREFIX = 'BUMP!';
 const PR_BUMP_LABEL_TEXT = 'bump';
