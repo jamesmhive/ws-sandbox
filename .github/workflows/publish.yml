@@ -50,14 +50,15 @@ jobs:
         run: npm run build
 
       - name: Get Workspace Info
+        id: workspace
         uses: ./.github/actions/workspace-info
         with:
           sha: ${{ github.sha }}
 
       - name: Get the output
         run: |
-          echo "workspace-name: ${{ steps.package.outputs.workspace-name }}"
-          echo "workspace-dir: ${{ steps.package.outputs.workspace-dir }}"
-          echo "package-name: ${{ steps.package.outputs.package-name }}"
-          echo "package-version: ${{ steps.package.outputs.package-version }}"
-          echo "publish-target: ${{ steps.package.outputs.publish-target }}"
+          echo "workspace-name: ${{ steps.workspace.outputs.workspace-name }}"
+          echo "workspace-dir: ${{ steps.workspace.outputs.workspace-dir }}"
+          echo "package-name: ${{ steps.workspace.outputs.package-name }}"
+          echo "package-version: ${{ steps.workspace.outputs.package-version }}"
+          echo "publish-target: ${{ steps.workspace.outputs.publish-target }}"
