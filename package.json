@@ -10,12 +10,12 @@
   ],
   "devDependencies": {
     "execa": "^7.1.1",
-    "glob": "^10.2.1",
+    "glob": "^9.2.1",
     "prompts": "^2.4.2",
     "turbo": "^1.7.4"
   },
   "scripts": {
-    "bump": "node ./scipts/bumpbot.js",
+    "bump": "node ./scripts/bumpbot.js",
     "build": "echo \"build\"",
     "pre-build": "echo \"pre-build\"",
     "pre-publish": "echo \"pre-publish\"",
