@@ -5,6 +5,10 @@
   "type": "module",
   "author": "",
   "license": "ISC",
+  "meta": {
+    "publishTarget": "AWS_BUCKET",
+    "publishDir": "dist"
+  },
   "scripts": {
     "pre-build": "echo \"pre-build\"",
     "test": "echo \"test\""

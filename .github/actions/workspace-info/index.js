@@ -1,15 +1,12 @@
 import path from 'path';
+const core = require('@actions/core');
 import {
   createProcessRunner,
-  getPackageNameNoScope,
   readJsonFile,
   startAction,
 } from '../../utils/action-utils.js';
 
 const GITHUB_WORKSPACE = process.env.GITHUB_WORKSPACE;
-const GITHUB_ACTOR = process.env.GITHUB_ACTOR;
-const GITHUB_TOKEN = process.env.GITHUB_TOKEN;
-const GITHUB_REPOSITORY = process.env.GITHUB_REPOSITORY;
 const INPUT_SHA = process.env.INPUT_SHA;
 
 const run = createProcessRunner({cwd: GITHUB_WORKSPACE});
@@ -53,38 +50,29 @@ async function main() {
     );
   }
 
-  const changedPackage = path.join(
+  const packagePath = path.join(
     GITHUB_WORKSPACE,
     packagesChanged[0].toString(),
   );
-  console.log(`package.json changed in this commit: ${changedPackage}`);
+  console.log(`package.json changed in this commit: ${packagePath}`);
 
   console.log('Reading package.json');
-  const pkg = await readJsonFile(changedPackage);
-  console.log(`package.name: ${pkg.name}`);
-  console.log(`package.version: ${pkg.version}`);
+  const packageJson = await readJsonFile(packagePath);
 
-  const tagName = `${getPackageNameNoScope(pkg.name)}/v${pkg.version}`;
-  console.log(`Creating tag "${tagName}"`);
+  const workspaceName = getPackageNameNoScope(packageJson.name);
+  const workspaceDir = path.dirname(packagePath);
 
-  await run('git', ['config', 'user.name', `"bumpbot"`]);
+  const {publishTarget} = packageJson.meta ?? {};
 
-  await run('git', [
-    'config',
-    'user.email',
-    `'bumpbot@users.noreply.github.com'`,
-  ]);
+  core.setOutput('package-name', packageJson.name);
+  core.setOutput('package-version', packageJson.version);
+  core.setOutput('workspace-name', workspaceName);
+  core.setOutput('workspace-dir', workspaceDir);
+  core.setOutput('publish-target', publishTarget);
+}
 
-  const repository = `https://${GITHUB_ACTOR}:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git`;
-  await run('git', [
-    'tag',
-    '-a',
-    tagName,
-    INPUT_SHA,
-    '-m',
-    `${pkg.name} v${pkg.version}`,
-  ]);
 
-  console.log('Pushing tag to repository');
-  await run('git', ['push', repository, '--tags']);
+export function getPackageNameNoScope(packageName) {
+  const n = packageName.indexOf('/');
+  return n === -1 ? packageName : packageName.substring(n + 1);
 }

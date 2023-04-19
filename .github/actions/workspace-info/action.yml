@@ -1,0 +1,19 @@
+name: 'Workspace Info'
+description: 'Gets information about the workspace that was version bumped'
+inputs:
+  sha:
+    description: 'Version bump commit SHA. The commit must contain one package.json change'
+outputs:
+  workspace-name:
+    description: 'Workspace name'
+  workspace-dir:
+    description: 'Full workspace directory path'
+  package-name:
+    description: 'Package name'
+  package-version:
+    description: 'Package version'
+  publish-target:
+    description: 'Publishing target: AWS_BUCKET | GITHUB_PACKAGES'
+runs:
+  using: 'node16'
+  main: 'index.js'

@@ -1,5 +1,5 @@
-name: 'Tag'
-description: 'Create a tag using the version from package.json in a bump commit'
+name: 'Publish Workspace'
+description: 'Publish the workspace that was version bumped in the specified commit'
 inputs:
   sha:
     description: 'Version bump commit SHA. The commit must contain one package.json change'
