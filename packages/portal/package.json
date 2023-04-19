@@ -6,8 +6,7 @@
   "author": "",
   "license": "ISC",
   "meta": {
-    "publishTarget": "S3_BUCKET",
-    "publishDir": "dist"
+    "publishTarget": "S3_BUCKET"
   },
   "scripts": {
     "pre-publish": "echo \"PRE-PUBLISH PORTAL \"",

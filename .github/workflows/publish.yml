@@ -66,8 +66,8 @@ jobs:
           email: 'bumpbot@users.noreply.github.com'
           message: 'Tag created by publish workflow'
 
-      - name: Publish S3 Bucket
-        if: ${{ steps.workspace.outputs.publish-target == 'S3_BUCKET' }}
+      - if: ${{ steps.workspace.outputs.publish-target == 'S3_BUCKET' }}
+        name: Publish S3 Bucket
         env:
           PUBLISH_DIR: ${{ steps.workspace.outputs.workspace-dir }}/dist
           S3_URI: '"s3://${{ env.S3_BUCKET_NAME }}/${{ steps.workspace.outputs.workspace-tag }}/"'

@@ -6,8 +6,7 @@
   "author": "",
   "license": "ISC",
   "meta": {
-    "publishTarget": "AWS_BUCKET",
-    "publishDir": "dist"
+    "publishTarget": "NONE"
   },
   "scripts": {
     "pre-build": "echo \"pre-build\"",
