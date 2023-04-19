@@ -70,7 +70,7 @@ jobs:
         if: ${{ steps.workspace.outputs.publish-target == 'S3_BUCKET' }}
         env:
           PUBLISH_DIR: ${{ steps.workspace.outputs.workspace-dir }}/dist
-          S3_URI: '"s3://${{ S3_BUCKET_NAME }}/${{ steps.workspace.outputs.workspace-tag }}/"'
+          S3_URI: '"s3://${{ env.S3_BUCKET_NAME }}/${{ steps.workspace.outputs.workspace-tag }}/"'
         run: |
           echo "aws s3 sync $PUBLISH_DIR $S3_URI --only-show-errors"
 
