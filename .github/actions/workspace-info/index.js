@@ -1,5 +1,5 @@
 import path from 'path';
-const core = require('@actions/core');
+import core from '@actions/core';
 import {
   createProcessRunner,
   readJsonFile,
