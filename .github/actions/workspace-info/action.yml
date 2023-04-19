@@ -5,7 +5,7 @@ inputs:
     description: 'Version bump commit SHA. The commit must contain one package.json change'
 outputs:
   workspace-name:
-    description: 'Workspace name'
+    description: 'Workspace name (package name without scope)'
   workspace-dir:
     description: 'Full workspace directory path'
   package-name:
@@ -15,7 +15,7 @@ outputs:
   package-tag:
     description: 'Package git tag name'
   publish-target:
-    description: 'Publishing target: AWS_BUCKET | GITHUB_PACKAGES'
+    description: 'Publishing target: S3_BUCKET | GITHUB_PACKAGES'
 runs:
   using: 'node16'
   main: 'index.js'

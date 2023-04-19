@@ -6,7 +6,7 @@
   "author": "",
   "license": "ISC",
   "meta": {
-    "publishTarget": "AWS_BUCKET",
+    "publishTarget": "S3_BUCKET",
     "publishDir": "dist"
   },
   "scripts": {
