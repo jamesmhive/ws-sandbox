@@ -1,14 +1,18 @@
 {
-  "name": "ws-sandbox",
+  "name": "@foobar/ws-sandbox",
   "version": "1.0.0",
   "description": "",
   "type": "module",
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "execa": "^7.1.1",
+    "glob": "^10.2.1",
+    "prompts": "^2.4.2",
     "turbo": "^1.7.4"
   },
   "scripts": {
+    "bump": "node ./scipts/bumpbot.js",
     "build": "echo \"build\"",
     "pre-build": "echo \"pre-build\"",
     "pre-publish": "echo \"pre-publish\"",
