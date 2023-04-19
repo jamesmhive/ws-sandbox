@@ -6,11 +6,11 @@ inputs:
   sha:
     description: 'The commit SHA to tag'
   user:
-    description: 'The git tag user name'
+    description: 'The tag user name'
   email:
-    description: 'The git tag message'
+    description: 'The tag email address'
   message:
-    description: 'The git tag message'
+    description: 'The tag message'
 runs:
   using: 'node16'
   main: 'index.js'

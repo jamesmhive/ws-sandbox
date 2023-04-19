@@ -10,6 +10,7 @@
     "publishDir": "dist"
   },
   "scripts": {
+    "pre-publish": "echo \"PRE-PUBLISH PORTAL \"",
     "pre-build": "echo \"pre-build\"",
     "test": "echo \"test\""
   }

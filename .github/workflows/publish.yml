@@ -55,6 +55,9 @@ jobs:
         with:
           sha: ${{ github.sha }}
 
+      - name: Pre-Publish
+        run: npm run pre-publish -w ./packages/${{ steps.workspace.outputs.workspace-name }} --if-present
+
       - name: Tag
         uses: ./.github/actions/tag
         with:

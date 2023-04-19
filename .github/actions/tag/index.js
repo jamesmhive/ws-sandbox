@@ -1,15 +1,7 @@
-import path from 'path';
 import {
   createProcessRunner,
-  getPackageNameNoScope, logError,
-  readJsonFile,
   startAction,
 } from '../../utils/action-utils.js';
-
-const PublishTarget = Object.freeze({
-  AWS_BUCKET: 'AWS_BUCKET',
-  GITHUB_PACKAGES: 'GITHUB_PACKAGES',
-});
 
 const GITHUB_WORKSPACE = process.env.GITHUB_WORKSPACE;
 const GITHUB_ACTOR = process.env.GITHUB_ACTOR;
@@ -43,7 +35,7 @@ export async function main() {
     INPUT_TAG,
     INPUT_SHA,
     '-m',
-    INPUT_MESSAGE, //`${pkg.name} v${pkg.version}`,
+    INPUT_MESSAGE,
   ]);
 
   console.log('Pushing tag to repository');
