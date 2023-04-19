@@ -11,9 +11,8 @@ permissions:
 
 env:
   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-  CDN_ASSET_HOST: https://xxx.cdn.introhive.com/
   AWS_ROLE_ARN: rolexxxxxx
-  AWS_BUCKET_NAME: ih-bucket-name
+  S3_BUCKET_NAME: ih-bucket-name
 
 jobs:
   publish:
