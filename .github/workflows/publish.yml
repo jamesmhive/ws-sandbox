@@ -62,3 +62,12 @@ jobs:
           echo "package-name: ${{ steps.workspace.outputs.package-name }}"
           echo "package-version: ${{ steps.workspace.outputs.package-version }}"
           echo "publish-target: ${{ steps.workspace.outputs.publish-target }}"
+
+      - name: Tag
+        uses: ./.github/actions/tag
+        with:
+          tag: ${{ steps.workspace.outputs.package-tag }}
+          sha: ${{ github.sha }}
+          user: "bumpbot"
+          email: "bumpbot@users.noreply.github.com"
+          message: "Tag created by publish workflow"

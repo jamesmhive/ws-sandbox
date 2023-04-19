@@ -62,17 +62,24 @@ async function main() {
   const workspaceName = getPackageNameNoScope(packageJson.name);
   const workspaceDir = path.dirname(packagePath);
 
+  const tagName = `${workspaceName}/v${packageJson.version}`;
+
   const {publishTarget} = packageJson.meta ?? {};
 
-  core.setOutput('package-name', packageJson.name);
-  core.setOutput('package-version', packageJson.version);
-  core.setOutput('workspace-name', workspaceName);
-  core.setOutput('workspace-dir', workspaceDir);
-  core.setOutput('publish-target', publishTarget);
+  setOutput('package-name', packageJson.name);
+  setOutput('package-version', packageJson.version);
+  setOutput('workspace-name', workspaceName);
+  setOutput('workspace-dir', workspaceDir);
+  setOutput('workspace-tag', tagName);
+  setOutput('publish-target', publishTarget);
 }
 
+function setOutput(name, value) {
+  console.log(`${name}=${value}`);
+  core.setOutput(name, value);
+}
 
-export function getPackageNameNoScope(packageName) {
+function getPackageNameNoScope(packageName) {
   const n = packageName.indexOf('/');
   return n === -1 ? packageName : packageName.substring(n + 1);
 }

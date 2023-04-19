@@ -1,0 +1,16 @@
+name: 'Tag'
+description: 'Create a git tag'
+inputs:
+  tag:
+    description: 'The git tag name'
+  sha:
+    description: 'The commit SHA to tag'
+  user:
+    description: 'The git tag user name'
+  email:
+    description: 'The git tag message'
+  message:
+    description: 'The git tag message'
+runs:
+  using: 'node16'
+  main: 'index.js'

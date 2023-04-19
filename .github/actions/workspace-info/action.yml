@@ -12,6 +12,8 @@ outputs:
     description: 'Package name'
   package-version:
     description: 'Package version'
+  package-tag:
+    description: 'Package git tag name'
   publish-target:
     description: 'Publishing target: AWS_BUCKET | GITHUB_PACKAGES'
 runs:
