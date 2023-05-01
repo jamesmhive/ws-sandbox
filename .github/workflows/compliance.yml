@@ -15,7 +15,7 @@ jobs:
     strategy:
       matrix:
         node-version: [18.14.0]
-    name: Compliance check
+    name: Compliance checks
     steps:
       - uses: actions/checkout@v3
 
@@ -24,7 +24,7 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
 
-      - name: Enforce Title
+      - name: Pull Request Title
         uses: ./.github/actions/enforce-title
         with:
-          pull-request-title: ${{ github.event.pull_request.title }}
+          title: ${{ github.event.pull_request.title }}

@@ -1,6 +1,6 @@
 import {startAction} from '../../utils/action-utils.js';
 
-const INPUT_PULL_REQUEST_TITLE = process.env.INPUT_PULL_REQUEST_TITLE;
+const INPUT_PULL_REQUEST_TITLE = process.env.INPUT_TITLE;
 const PR_TITLE_CRITERIA = [
   {
     description: 'Version bump pull request starting with "BUMP!"',
@@ -29,7 +29,7 @@ function printErrorMessageDetails() {
   ];
   PR_TITLE_CRITERIA.forEach((criteria) => {
     message.push(`\n${criteria.description}`);
-    message.push(`\t${criteria.test}`);
+    message.push(`\ttest: ${criteria.test}`);
   });
-  console.error(message.join('\n'));
+  console.error(message.join('\n\n'));
 }

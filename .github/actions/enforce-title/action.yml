@@ -1,7 +1,7 @@
 name: 'Enforce Title'
 description: 'Checks pull request title for Jira ticket'
 inputs:
-  pull-request-title:
+  title:
     description: 'The GitHub event pull request title'
 runs:
   using: 'node16'
