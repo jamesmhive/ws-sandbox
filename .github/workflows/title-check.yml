@@ -1,0 +1,21 @@
+name: Title Check
+on:
+  pull_request:
+    branches:
+      - master
+    types:
+      - opened
+      - reopened
+      - edited
+      - synchronize
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [18.14.0]
+    name: Title Check
+    uses: ./.github/actions/title-check
+    with:
+      pull-request-title: ${{ github.event.pull_request.title }}
