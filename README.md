@@ -1,2 +1,2 @@
 # ws-sandbox
-testing npm workspaces
+testing npm workspaces and github workflows
