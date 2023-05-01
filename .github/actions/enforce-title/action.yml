@@ -1,4 +1,4 @@
-name: 'Title Check'
+name: 'Enforce Title'
 description: 'Checks pull request title for Jira ticket'
 inputs:
   pull-request-title:
