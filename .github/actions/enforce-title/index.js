@@ -28,8 +28,7 @@ function printErrorMessageDetails() {
     `Titles must match one of the following:`,
   ];
   PR_TITLE_CRITERIA.forEach((criteria, index) => {
-    message.push(`\n\t${index + 1}. ${criteria.description}`);
+    message.push(`\t${index + 1}. ${criteria.description}\n`);
   });
-  message.push('\n');
   console.error(message.join('\n'));
 }
