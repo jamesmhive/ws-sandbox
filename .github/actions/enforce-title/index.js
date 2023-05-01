@@ -7,7 +7,7 @@ const PR_TITLE_CRITERIA = [
     test: /^BUMP!\s/,
   },
   {
-    description: 'JIRA ticket in the form of "IHS-#######"',
+    description: 'Starts with a JIRA ticket number in the form of "IHS-#######"',
     test: /^IHS-([0-9])+\s/,
   },
 ];
@@ -28,7 +28,7 @@ function printErrorMessageDetails() {
     `Titles must match one of the following:`,
   ];
   PR_TITLE_CRITERIA.forEach((criteria, index) => {
-    message.push(`\t${index + 1}. ${criteria.description}\n`);
+    message.push(`\t${index + 1}. ${criteria.description}`);
   });
   console.error(message.join('\n'));
 }
