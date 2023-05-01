@@ -15,7 +15,11 @@ jobs:
     strategy:
       matrix:
         node-version: [18.14.0]
-    name: Title Check
-    uses: ./.github/actions/title-check
-    with:
-      pull-request-title: ${{ github.event.pull_request.title }}
+    - name: Setup node
+      uses: actions/setup-node@v3
+      with:
+        node-version: ${{ matrix.node-version }}
+    - name: Title check
+      uses: ./.github/actions/title-check
+      with:
+        pull-request-title: ${{ github.event.pull_request.title }}
