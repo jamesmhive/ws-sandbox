@@ -30,5 +30,5 @@ function printErrorMessageDetails() {
   PR_TITLE_CRITERIA.forEach((criteria, index) => {
     message.push(`\n\t${index + 1}. ${criteria.description}`);
   });
-  console.error(message.join('\n\n'));
+  console.error(message.join('\n'));
 }
