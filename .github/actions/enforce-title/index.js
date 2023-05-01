@@ -14,7 +14,7 @@ const PR_TITLE_CRITERIA = [
 
 void startAction(() => {
   const satisfiesCriteria = PR_TITLE_CRITERIA.some((criteria) => {
-    criteria.test.test(INPUT_PULL_REQUEST_TITLE);
+    return criteria.test.test(INPUT_PULL_REQUEST_TITLE);
   });
   if (!satisfiesCriteria) {
     printErrorMessageDetails();
@@ -27,9 +27,8 @@ function printErrorMessageDetails() {
     `Pull request title "${INPUT_PULL_REQUEST_TITLE}" does not match PR title criteria.`,
     `Titles must match one of the following:`,
   ];
-  PR_TITLE_CRITERIA.forEach((criteria) => {
-    message.push(`\n${criteria.description}`);
-    message.push(`\ttest: ${criteria.test}`);
+  PR_TITLE_CRITERIA.forEach((criteria, index) => {
+    message.push(`\n\t${index + 1}. ${criteria.description}`);
   });
   console.error(message.join('\n\n'));
 }
