@@ -24,11 +24,12 @@ void startAction(() => {
 
 function printErrorMessageDetails() {
   const message = [
-    `Pull request title "${INPUT_PULL_REQUEST_TITLE}" does not match PR title criteria.`,
+    `\nPull request title "${INPUT_PULL_REQUEST_TITLE}" does not match PR title criteria.`,
     `Titles must match one of the following:`,
   ];
   PR_TITLE_CRITERIA.forEach((criteria, index) => {
     message.push(`\t${index + 1}. ${criteria.description}`);
   });
+  message.push('\n');
   console.error(message.join('\n'));
 }
