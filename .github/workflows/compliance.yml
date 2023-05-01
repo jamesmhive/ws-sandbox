@@ -1,4 +1,4 @@
-name: Compliance
+name: Soc2 Compliance
 on:
   pull_request:
     branches:
@@ -10,7 +10,7 @@ on:
       - synchronize
 
 jobs:
-  compliance:
+  check:
     runs-on: ubuntu-latest
     strategy:
       matrix:
