@@ -10,7 +10,7 @@ on:
       - synchronize
 
 jobs:
-  publish:
+  title-check:
     runs-on: ubuntu-latest
     strategy:
       matrix:
